@@ -25,6 +25,15 @@ HostedDependency: ^3.0.0 => 3.0.2 	 pub_client
 HostedDependency: ^1.5.0 => 1.5.0 	 args
 ```
 
+If a major change is detected, it will give you the link to the changelog to see if there are any breaking changes. Here is an example:
+
+```
+--------- MAJOR DIFFERENCE ---------
+Changelog: https://pub.dartlang.org/packages/flutter_inapp_purchase#-changelog-tab-
+HostedDependency: 0.7.0 => 0.8.0         flutter_inapp_purchase
+------------------------------------
+HostedDependency: ^0.5.18 => 0.5.20      firebase_auth
+```
 
 ## Notes
 
