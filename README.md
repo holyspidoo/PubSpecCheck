@@ -8,6 +8,8 @@ Utility to check the versions of packages in a pubspec.yaml file. Useful to see 
 dart SpecCheck.dart yourfile.yaml
 ```
 
+Remember that if you have Flutter installed, there is a dart binary in there, most likely in `some_dir/flutter/bin/cache/dart-sdk/bin/dart`
+
 ## Example
 
 If you run the script on its own pubspec.yaml
