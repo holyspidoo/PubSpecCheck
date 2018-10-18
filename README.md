@@ -54,7 +54,7 @@ With the `-a` flag, all changelogs will be shown, regardless of version numbers.
 
 For example, when running this:
 ```
-> dart SpecCheck.dart pubspec.yaml
+> dart SpecCheck.dart -c pubspec.yaml
 ```
 
 You might get something like:
