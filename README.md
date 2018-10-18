@@ -48,7 +48,9 @@ HostedDependency: 0.8.0 => 0.8.2         flutter_inapp_purchase
 
 ## Show all changelogs
 
-With the -c flag, all changelogs urls will be shown for packages where the versions are different from those found in the pubspec.yaml file.
+With the `-c` flag, all changelogs urls will be shown for packages where the versions are different from those found in the pubspec.yaml file.
+
+With the `-a` flag, all changelogs will be shown, regardless of version numbers.
 
 For example, when running this:
 ```

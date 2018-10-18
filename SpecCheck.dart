@@ -6,17 +6,14 @@ import 'package:pubspec_parse/pubspec_parse.dart' as pbs;
 import 'package:pub_semver/pub_semver.dart' as sem;
 
 const showChangeLogsUrls = 'showChangeLogsUrls';
-
-final START_VERSION = new RegExp(r'^' // Start at beginning.
-    r'(\d+).(\d+).(\d+)' // Version number.
-    r'(-([0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*))?' // Pre-release.
-    r'(\+([0-9A-Za-z-]+(\.[0-9A-Za-z-]+)*))?'); // Build.
+const showAllChangeLogsUrls = 'showAllChangeLogsUrls';
 
 main(List<String> arguments) async {
   exitCode = 0;
 
   var parser = new ArgParser()
-    ..addFlag(showChangeLogsUrls, negatable: false, abbr: 'c');
+    ..addFlag(showChangeLogsUrls, negatable: false, abbr: 'c')
+    ..addFlag(showAllChangeLogsUrls, negatable: false, abbr: 'a');
   var parseResults = parser.parse(arguments);
 
   PubClient client = new PubClient();
@@ -28,6 +25,7 @@ main(List<String> arguments) async {
   }
 
   bool showChangeLogs = parseResults[showChangeLogsUrls];
+  bool showAllChangeLogs = parseResults[showAllChangeLogsUrls];
 
   print("Processing this file: " + parseResults.rest[0]);
 
@@ -49,8 +47,8 @@ main(List<String> arguments) async {
                 "https://pub.dartlang.org/packages/" +
                 package +
                 "#-changelog-tab-");
-          } else if (showChangeLogs) {
-            if (currentConstraint.min.toString() ==
+          } else if (showChangeLogs || showAllChangeLogs) {
+            if (!showAllChangeLogs && currentConstraint.min.toString() ==
                 onlinePackage.latest.version.toString()) {
                   print("------------------------------------");
               print("No new version, no changelog needed");
