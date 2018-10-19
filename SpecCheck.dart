@@ -31,11 +31,12 @@ main(List<String> arguments) async {
   print("Processing this file: " + parseResults.rest[0]);
   print("------------------------------------\n");
 
+
   var myFile = new File(parseResults.rest[0]);
 
-  String thestring = await myFile.readAsString();
+  String theString = await myFile.readAsString();
 
-  var doc = pbs.Pubspec.parse(thestring);
+  var doc = pbs.Pubspec.parse(theString);
 
   for (var package in doc.dependencies.keys) {
     var version = doc.dependencies[package];
