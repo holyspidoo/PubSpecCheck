@@ -42,7 +42,9 @@ main(List<String> arguments) async {
     var version = doc.dependencies[package];
     
     if (package is String) {
-      FullPackage onlinePackage = await client.getPackage(package);
+
+      try {
+        FullPackage onlinePackage = await client.getPackage(package);
 
       sem.VersionRange currentConstraint =
           sem.VersionConstraint.parse(version.toString().split(" ")[1]);
@@ -76,6 +78,10 @@ main(List<String> arguments) async {
       if (!currentConstraint.allows(newestVersion)) {
         print("------------------------------------");
       }
+      } catch (e) {
+      }
+
+      
     }
     
   }
