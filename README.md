@@ -80,4 +80,8 @@ HostedDependency: ^0.3.2 => 0.3.2        package_info
 
 ## Notes
 
-No error handling of any kind, this is just a quick and dirty script 🙂
+If you are going to use this a lot, take the time to make a snapshot with Dart to make runtime faster!
+
+https://github.com/dart-lang/sdk/wiki/Snapshots
+
+Also, there is little to no error handling of any kind, this is just a quick and dirty script 🙂
