@@ -2,3 +2,4 @@
 .packages
 pubspec.lock
 .vscode/launch.json
+SpecCheck.snap

@@ -27,51 +27,59 @@ main(List<String> arguments) async {
   bool showChangeLogs = parseResults[showChangeLogsUrls];
   bool showAllChangeLogs = parseResults[showAllChangeLogsUrls];
 
+  print("\n------------------------------------");
   print("Processing this file: " + parseResults.rest[0]);
+  print("------------------------------------\n");
 
   var myFile = new File(parseResults.rest[0]);
 
-  myFile.readAsString().then((thestring) async {
-    var doc = pbs.Pubspec.parse(thestring);
+  String thestring = await myFile.readAsString();
 
-    doc.dependencies.forEach((package, version) {
-      if (package is String) {
-        client.getPackage(package).then((onlinePackage) {
-          sem.VersionRange currentConstraint =
-              sem.VersionConstraint.parse(version.toString().split(" ")[1]);
-          var newestVersion = sem.Version.parse(onlinePackage.latest.version);
+  var doc = pbs.Pubspec.parse(thestring);
 
-          if (!currentConstraint.allows(newestVersion)) {
-            print("\n--------- MAJOR DIFFERENCE ---------");
-            print("Changelog: " +
-                "https://pub.dartlang.org/packages/" +
-                package +
-                "#-changelog-tab-");
-          } else if (showChangeLogs || showAllChangeLogs) {
-            if (!showAllChangeLogs && currentConstraint.min.toString() ==
+  for (var package in doc.dependencies.keys) {
+    var version = doc.dependencies[package];
+    
+    if (package is String) {
+      FullPackage onlinePackage = await client.getPackage(package);
+
+      sem.VersionRange currentConstraint =
+          sem.VersionConstraint.parse(version.toString().split(" ")[1]);
+      var newestVersion = sem.Version.parse(onlinePackage.latest.version);
+
+      if (!currentConstraint.allows(newestVersion)) {
+        print("\n--------- MAJOR DIFFERENCE ---------");
+        print("Changelog: " +
+            "https://pub.dartlang.org/packages/" +
+            package +
+            "#-changelog-tab-");
+      } else if (showChangeLogs || showAllChangeLogs) {
+        if (!showAllChangeLogs &&
+            currentConstraint.min.toString() ==
                 onlinePackage.latest.version.toString()) {
-                  print("------------------------------------");
-              print("No new version, no changelog needed");
-            } else {
-              print("------------------------------------");
-              print("Changelog: " +
-                  "https://pub.dartlang.org/packages/" +
-                  package +
-                  "#-changelog-tab-");
-            }
-          }
-          print(version.toString() +
-              " => " +
-              onlinePackage.latest.version +
-              " \t " +
-              package);
-          if (!currentConstraint.allows(newestVersion)) {
-            print("------------------------------------");
-          }
-        }).catchError((error) {
-          //print(error);
-        });
+          print("------------------------------------");
+          print("No new version, no changelog needed");
+        } else {
+          print("------------------------------------");
+          print("Changelog: " +
+              "https://pub.dartlang.org/packages/" +
+              package +
+              "#-changelog-tab-");
+        }
       }
-    });
-  });
+      print(version.toString() +
+          " => " +
+          onlinePackage.latest.version +
+          " \t " +
+          package);
+      if (!currentConstraint.allows(newestVersion)) {
+        print("------------------------------------");
+      }
+    }
+    
+  }
+  print("\n------------------------------------");
+  print("Done processing yaml file");
+  print("------------------------------------");
+  exit(0);
 }
