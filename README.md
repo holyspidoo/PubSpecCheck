@@ -1,4 +1,4 @@
-# pubspeccheck
+# PubSpecCheck
 
 Utility to check the versions of packages in a pubspec.yaml file. Useful to see if there is a shift in major versions _(ex: 0.7.0 to 0.8.0)_ so you can update your version rules inside the pubspec file.
 
@@ -93,8 +93,4 @@ HostedDependency: ^0.3.2 => 0.3.2        package_info
 
 ## Notes
 
-If you are going to use this a lot, take the time to make a snapshot with Dart to make runtime faster!
-
-https://github.com/dart-lang/sdk/wiki/Snapshots
-
-Also, there is little to no error handling of any kind, this is just a quick and dirty script 🙂
+There is little to no error handling of any kind, this is just a quick and dirty script 🙂

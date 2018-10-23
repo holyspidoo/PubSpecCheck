@@ -2,7 +2,7 @@ name: pubspeccheck
 description: >
   Checks your pubspec.yaml file and warns you of important, possibly breaking version changes for all the packages you use.
 # After changing the version, run `pub run build_runner build`.
-version: 0.0.1
+version: 0.0.2
 author: JGabriel <infojgmx@gmail.com>
 homepage: https://github.com/holyspidoo/PubSpecCheck
 environment:
