@@ -7,13 +7,13 @@ Utility to check the versions of packages in a pubspec.yaml file. Useful to see 
 To install:
 
 ```console
-> pub global activate PubSpecCheck
+> pub global activate pubspec
 ```
 
 To update, run activate again:
 
 ```console
-> pub global activate PubSpecCheck
+> pub global activate pubspec
 ```
 
 
