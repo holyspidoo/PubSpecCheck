@@ -27,7 +27,7 @@ pubspec -a yourfile.yaml
 
 ## Example
 
-If you run the script on its own pubspec.yaml
+If you run the utility on its own pubspec.yaml
 ```
 > pubspec pubspec.yaml
 ```
