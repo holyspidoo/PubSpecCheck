@@ -1,4 +1,14 @@
 name: SpecCheck
+description: >
+  Checks your YAML file and warns you of important, possibly breaking version changes for all the packages you use.
+# After changing the version, run `pub run build_runner build`.
+version: 0.0.1
+author: JGabriel <infojgmx@gmail.com>
+homepage: https://github.com/holyspidoo/PubSpecCheck
+environment:
+  sdk: '>=2.0.0 <3.0.0'
+executables:
+  pubspec:
 dependencies:
   pub_client: ^3.0.0
   pubspec_parse: ^0.1.2+2

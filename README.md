@@ -2,21 +2,34 @@
 
 Utility to check the versions of packages in a pubspec.yaml file. Useful to see if there is a shift in major versions _(ex: 0.7.0 to 0.8.0)_ so you can update your version rules inside the pubspec file.
 
+## Installation
+
+To install:
+
+```console
+> pub global activate PubSpecCheck
+```
+
+To update, run activate again:
+
+```console
+> pub global activate PubSpecCheck
+```
+
+
 ## Usage
 
+```console
+pubspec yourfile.yaml
+pubspec -c yourfile.yaml
+pubspec -a yourfile.yaml
 ```
-dart SpecCheck.dart yourfile.yaml
-dart SpecCheck.dart -c yourfile.yaml
-dart SpecCheck.dart -a yourfile.yaml
-```
-
-Remember that if you have Flutter installed, there is a dart binary in there, most likely in `some_dir/flutter/bin/cache/dart-sdk/bin/dart`
 
 ## Example
 
 If you run the script on its own pubspec.yaml
 ```
-> dart SpecCheck.dart pubspec.yaml
+> pubspec pubspec.yaml
 ```
 
 You will get
@@ -58,7 +71,7 @@ With the `-a` flag, all changelogs will be shown, regardless of version numbers.
 
 For example, when running this:
 ```
-> dart SpecCheck.dart -c pubspec.yaml
+> pubspec -c pubspec.yaml
 ```
 
 You might get something like:
