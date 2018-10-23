@@ -1,4 +1,4 @@
-# PubSpecCheck (aka pubspec)
+# pubspeccheck
 
 Utility to check the versions of packages in a pubspec.yaml file. Useful to see if there is a shift in major versions _(ex: 0.7.0 to 0.8.0)_ so you can update your version rules inside the pubspec file.
 
@@ -7,13 +7,13 @@ Utility to check the versions of packages in a pubspec.yaml file. Useful to see 
 To install:
 
 ```console
-> pub global activate pubspec
+> pub global activate pubspeccheck
 ```
 
 To update, run activate again:
 
 ```console
-> pub global activate pubspec
+> pub global activate pubspeccheck
 ```
 
 
