@@ -38,11 +38,25 @@ If you run the utility on its own pubspec.yaml
 You will get
 
 ```
-[pubspec.yaml]
-HostedDependency: ^2.1.15 => 2.1.15 	 yaml
-HostedDependency: ^0.1.2+2 => 0.1.2+2 	 pubspec_parse
-HostedDependency: ^3.0.0 => 3.0.2 	 pub_client
-HostedDependency: ^1.5.0 => 1.5.0 	 args
+
+------------------------------------
+Processing this file: pubspec.yaml
+------------------------------------
+
+HostedDependency: ^1.4.2 => 1.4.2        pub_semver
+HostedDependency: ^2.1.15 => 2.1.15      yaml
+HostedDependency: ^1.5.0 => 1.5.1        args
+HostedDependency: ^3.0.0 => 3.0.3        pub_client
+HostedDependency: ^0.1.2+2 => 0.1.4      pubspec_parse
+
+------------------------------------
+Dev dependencies
+------------------------------------
+
+------------------------------------
+Done processing yaml file
+------------------------------------
+
 ```
 
 
