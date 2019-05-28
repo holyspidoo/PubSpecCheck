@@ -1,3 +1,5 @@
+## 0.1.1
+- Checks for DEV dependencies
 ## 0.1.0
 - Version bump since everything seems fine for now
 ## 0.0.2

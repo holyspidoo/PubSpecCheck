@@ -1,5 +1,6 @@
+.idea
 .DS_Store
 .packages
 pubspec.lock
-.vscode/launch.json
+.vscode
 SpecCheck.snap
