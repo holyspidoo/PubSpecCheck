@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:args/args.dart';
@@ -37,8 +38,35 @@ main(List<String> arguments) async {
 
   var doc = pbs.Pubspec.parse(theString);
 
-  for (var package in doc.dependencies.keys) {
-    var version = doc.dependencies[package];
+  await printAvailableUpdates(
+    doc.dependencies,
+    client,
+    showChangeLogs,
+    showAllChangeLogs,
+  );
+  print("\n------------------------------------");
+  print("Dev dependencies");
+  print("------------------------------------");
+  await printAvailableUpdates(
+    doc.devDependencies,
+    client,
+    showChangeLogs,
+    showAllChangeLogs,
+  );
+  print("\n------------------------------------");
+  print("Done processing yaml file");
+  print("------------------------------------");
+  exit(0);
+}
+
+Future printAvailableUpdates(
+  Map<String, pbs.Dependency> dependencies,
+  PubClient client,
+  bool showChangeLogs,
+  bool showAllChangeLogs,
+) async {
+  for (var package in dependencies.keys) {
+    var version = dependencies[package];
 
     if (package is String) {
       try {
@@ -79,8 +107,4 @@ main(List<String> arguments) async {
       } catch (e) {}
     }
   }
-  print("\n------------------------------------");
-  print("Done processing yaml file");
-  print("------------------------------------");
-  exit(0);
 }
